@@ -1,0 +1,76 @@
+managed implementation in class zbp_chi_sd_sample unique;
+strict ( 2 );
+with draft;
+
+define behavior for zchi_sd_sample alias sample
+persistent table zch_sd_sample
+draft table zch_sd_sampled
+etag master locallastchangedat
+lock master total etag locallastchangedat
+authorization master ( global )
+
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly )
+  ruuid,
+  salesdocument,
+  //    CREATED_AT,
+  //    CREATED_BY,
+  //    LASTCHANGEDAT,
+  //    LASTCHANGEDBY,
+  locallastchangedat;
+
+  field ( numbering : managed )
+  ruuid;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  //  action ( features : instance ) create_text result [1] $self;
+  static action to_text_app ;
+  static action create_text ;
+  static action save ; //result [1] $self;
+
+ static action  save_excel parameter zcha_filename2;
+//  action ( features : instance ) save_excel parameter zcha_filename2;
+  action ( features : instance ) save_json parameter zcha_filename2;
+  action ( features : instance ) save_xml parameter zcha_filename2;
+  action ( features : instance ) save_text parameter zcha_filename2;
+
+  action file_name parameter zcha_filename result [1] $self;
+  action file_name2 parameter zcha_filename ;
+  action to_app2;
+//  action ( features : instance ) to_app result [1] $self;
+  action ( features : instance ) to_app;
+
+
+  mapping for zch_sd_sample
+    {
+      ruuid                = ruuid;
+      salesdocument        = salesdocument;
+      salesgroup           = salesgroup;
+      salesdocumentitem    = salesdocumentitem;
+      material             = material;
+      salesdocumentdate    = salesdocumentdate;
+      salesorganization    = salesorganization;
+      distributionchannel  = distributionchannel;
+      organizationdivision = organizationdivision;
+      transactioncurrency  = transactioncurrency;
+      //      mimetype      = mimetype;
+      //      filename      = filename;
+      //      attachment    = attachment;
+      //      longstring    = longstring;
+      //      salesgroup    = salesgroup;
+      created_by           = created_by;
+      created_at           = created_at;
+      lastchangedby        = lastchangedby;
+      lastchangedat        = lastchangedat;
+      locallastchangedat   = locallastchangedat;
+    }
+
+}

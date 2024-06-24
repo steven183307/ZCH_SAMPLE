@@ -1,0 +1,8 @@
+@Metadata.layer: #CORE
+annotate entity zcha_filename2
+    with 
+{
+    @EndUserText.label: 'File Name'
+    filename;
+    
+}

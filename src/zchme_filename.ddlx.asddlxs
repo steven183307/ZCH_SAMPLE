@@ -1,0 +1,10 @@
+@Metadata.layer: #CORE
+annotate entity zcha_filename
+    with 
+{
+    @EndUserText.label: 'File Name'
+    filename;
+    @EndUserText.label: 'Type Name'
+    @Consumption.valueHelpDefinition: [{ entity:{ element: 'typeName', name: 'ZCHV_FILE_TYPE'} }]
+    typeName;
+}

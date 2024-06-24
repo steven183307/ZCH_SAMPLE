@@ -1,0 +1,4 @@
+@EndUserText.label: 'sample'
+define service Zch_sample_ui {
+  expose zchc_sd_sample;
+}
